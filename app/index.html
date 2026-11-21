@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vice Coast Cover Studio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <div class="brand-plate" aria-hidden="true">VI</div>
+    <div class="brand-text">
+      <h1>Vice Coast Cover Studio</h1>
+      <p>Turn your photos into multi-panel cover art. Photos stay on your machine — nothing is uploaded.</p>
+    </div>
+  </div>
+  <div class="top-actions">
+    <button id="addPhotosBtn" class="btn btn-teal" type="button">Add photos</button>
+    <button id="samplePhotosBtn" class="btn btn-ghost" type="button">Sample photos</button>
+    <button id="exportBtn" class="btn btn-amber" type="button">Export PNG</button>
+  </div>
+</header>
+
+<main class="workspace">
+  <section class="stage" id="stage">
+    <div class="canvas-frame" id="canvasFrame">
+      <canvas id="coverCanvas" width="1080" height="1080"></canvas>
+    </div>
+    <p class="stage-hint">Click a panel to select it, then drag to reposition. Scroll on a panel to zoom.</p>
+  </section>
+
+  <aside class="rail">
+    <div class="group">
+      <h2>Layout</h2>
+      <div class="segmented" id="layoutSeg" role="group" aria-label="Layout">
+        <button type="button" data-layout="classic" class="seg is-on">Classic grid</button>
+        <button type="button" data-layout="hero" class="seg">Hero + duo</button>
+        <button type="button" data-layout="triptych" class="seg">Triptych</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Post size</h2>
+      <div class="segmented" id="sizeSeg" role="group" aria-label="Post size">
+        <button type="button" data-size="square" class="seg is-on">1080 × 1080</button>
+        <button type="button" data-size="portrait" class="seg">1080 × 1350</button>
+        <button type="button" data-size="wide" class="seg">1920 × 1080</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Colour grade</h2>
+      <div class="segmented" id="gradeSeg" role="group" aria-label="Colour grade">
+        <button type="button" data-grade="sunset" class="seg is-on">Vice sunset</button>
+        <button type="button" data-grade="neon" class="seg">Neon night</button>
+        <button type="button" data-grade="clean" class="seg">Clean</button>
+      </div>
+    </div>
+
+    <div class="group">
+      <h2>Caption</h2>
+      <label class="field">
+        <span>Title</span>
+        <input id="titleInput" type="text" value="SUNSET HEIST" maxlength="26" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Subtitle</span>
+        <input id="subtitleInput" type="text" value="A VICE COAST STORY" maxlength="34" autocomplete="off">
+      </label>
+      <label class="field">
+        <span>Plate</span>
+        <input id="plateInput" type="text" value="VI" maxlength="4" autocomplete="off">
+      </label>
+    </div>
+
+    <div class="group">
+      <h2>Selected panel</h2>
+      <label class="field">
+        <span>Zoom</span>
+        <input id="zoomRange" type="range" min="100" max="300" value="100" step="1">
+      </label>
+      <div class="row-buttons">
+        <button id="nextPhotoBtn" class="btn btn-small" type="button">Next photo</button>
+        <button id="fillAllBtn" class="btn btn-small" type="button">Fill all panels</button>
+      </div>
+      <p class="panel-info" id="panelInfo">Panel 1 of 4 · 4 photo(s) loaded · zoom 100%</p>
+    </div>
+
+    <div class="group">
+      <h2>Photos</h2>
+      <div class="photo-strip" id="photoStrip"></div>
+      <p class="rail-note">Click a photo to put it in the selected panel. Drop image files anywhere to add your own.</p>
+    </div>
+  </aside>
+</main>
+
+<input id="fileInput" type="file" accept="image/*" multiple hidden>
+<script type="module" src="src/main.js"></script>
+</body>
+</html>
